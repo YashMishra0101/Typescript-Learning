@@ -7,20 +7,11 @@
 - npm install -g typescript  —>> tsc --version —>> tsc app.ts —> node app.js
 - tsc —init (if there is any error use this : npx tsc —init )
 - tsc —watch
-- tsc --init
-- clt + `
+- tsc --init ( create ts config file)
+- clt + `  (For open current terminal)
 - clt + s 
 
 */
-//#Random Code
-
-//---------------
-
-let y: number | string = 10;
-y = "Trisha";
-
-//----------------
-
 /*
 #1)Tuples in TypeScript:
 
@@ -30,7 +21,7 @@ In **TypeScript**, a **tuple** is a special type of array where the **number of 
 fixed**. This means each element in the tuple can have a different type, and their order is important. 
 It allows you to store multiple values of different types in a single variable.
 
->Additional Tips**:  
+>Additional Tips:  
 In interviews, you can mention that tuples help in scenarios where the number of elements and their types 
 are well-defined, such as returning multiple values from a function.
 
@@ -202,13 +193,15 @@ let errorFunction = (): never => {
 
 */
 
-//#What is type inference in TypeScript ?
+//#What is type Inference in TypeScript ?
 
 /*
+>Automatic identify kr naaa
 
 Type inference in TypeScript is the ability of the compiler to automatically determine the type of a 
 variable or expression based on its value or context, without needing explicit type annotations. 
-This feature helps keep the code clean and reduces redundancy while still providing type safety. For example, if you write `let num = 5;`, TypeScript infers that `num` is of type `number`. 📊✨
+This feature helps keep the code clean and reduces redundancy while still providing type safety.
+For example, if you write `let num = 5;`, TypeScript infers that `num` is of type `number`. 
 
 Even with type inference, we mention types explicitly for clarity, better error checking, improved IDE 
 support, and to maintain code readability, especially in larger projects and for the developers.
@@ -217,7 +210,7 @@ Example : let num = 5; // TypeScript infers that 'num' is of type 'number'
 
 */
 
-//#What is a union in TypeScript?🤔
+//#What is a union in?
 
 /*
 A union in TypeScript allows you to define a variable that can hold multiple types of values. 
@@ -236,20 +229,101 @@ Using union types helps create more dynamic and flexible code while still benefi
 from TypeScript’s type-checking features
 */
 
-//#Rando code
+/*
+### void vs never in TypeScript
 
-//--------------------
+>> 1. `void`:
+- Use: For functions that complete normally but do not return a value**.
+  
+- Purpose: Function runs and finishes without returning anything.
 
-let a = "1";
+>> 2.`never`:
+- Use: For functions that **never finish** or **terminate unexpectedly**.
 
-let run = (num1: number | string, num2: number) => {
-  if (typeof num1 === "string") {
-    return num1 + num2;
-  } else {
-    return num1 + num2;
-  }
+-Purpose: Used for functions that throw errors or run infinitely.
+
+>>Key Difference:
+
+- `void`: Function completes but **returns nothing**.
+- `never`: Function **never completes** normally (throws an error or loops forever).
+
+*/
+
+//>Example :
+
+function greet(): void {
+  console.log("Hello, Yashu!"); //example of void
+}
+
+function throwError(message: string): never {
+  throw new Error(message); //example of never
+}
+
+/*
+
+#Intersection : 
+=>Intersection types in TypeScript allow you to combine multiple types into a single type that includes 
+all properties from the combined types. An intersection type is created using the & operator, which 
+requires that a value must satisfy all specified types, meaning it must have all the properties and 
+methods defined in those types.
+
+
+// let hmm:number & string ; This is not possible
+
+type user = {
+  name: string;
+  role: string;
 };
 
-console.log(run(a, 3));
+type info = {
+location: string;
+experience: string;
+};
 
-//-----------------
+type userInfo = user & info;
+
+let combine: userInfo = {
+  name: "Yash",
+  role: "Full Stack",
+  location: "Bangalore",
+  experience:"1year"
+};
+
+console.log(combine)
+*/
+
+
+
+/*
+#Type alias
+
+A **type alias** allows you to define a common type once and reuse it in different places, instead of 
+rewriting the same type multiple times. It makes your code cleaner and easier to manage.
+
+//-- Example 1
+
+type Age=number|boolean;
+
+let yashu:Age=22;
+
+//-- Example 2
+
+//-- Defining a type alias for an object
+
+type Person = {
+  name: string;
+  age: number;
+  isEmployed: boolean;
+};
+
+// Now, we can use 'Person' instead of rewriting the object structure
+
+let user: Person = {
+  name: "Yash",
+  age: 22,
+  isEmployed: true
+};
+
+console.log(user);
+
+*/
