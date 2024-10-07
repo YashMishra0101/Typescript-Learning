@@ -268,7 +268,7 @@ requires that a value must satisfy all specified types, meaning it must have all
 methods defined in those types.
 
 
-// let hmm:number & string ; This is not possible
+// let value:number & string ; This is not possible
 
 type user = {
   name: string;
@@ -291,7 +291,6 @@ let combine: userInfo = {
 
 console.log(combine)
 */
-
 
 
 /*
@@ -327,3 +326,6 @@ let user: Person = {
 console.log(user);
 
 */
+
+
+
