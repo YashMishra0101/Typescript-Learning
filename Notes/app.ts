@@ -17,11 +17,12 @@
 
 ---
 
-In **TypeScript**, a **tuple** is a special type of array where the **number of elements and their types are 
-fixed**. This means each element in the tuple can have a different type, and their order is important. 
+In TypeScript, a Tuple is a special type of array where the **number of elements and their types are 
+fixed. This means each element in the tuple can have a different type, and their order is important. 
 It allows you to store multiple values of different types in a single variable.
 
->Additional Tips:  
+Additional Tips:  
+
 In interviews, you can mention that tuples help in scenarios where the number of elements and their types 
 are well-defined, such as returning multiple values from a function.
 
@@ -31,12 +32,8 @@ are well-defined, such as returning multiple values from a function.
 
 let myTuple: [string, number];
 myTuple = ["Yashu", 22]; // Correct
-// myTuple = [22, "Yashu"]; // Error, wrong order!
+// myTuple = [22, "Yashu"]; // Error, wrong order
 // myTuple =["Yashu", 22, 33] // it won't work because the tuple is restricted to two elements—a string and a number.
-
-let bOne: number;
-let bTwo: string;
-let bThree: [];
 
 let bFour: [number, string] = [5, "naam"];
 
@@ -49,14 +46,13 @@ and maintain. Instead of using individual variables for each constant, you use a
 names. (Bascially Enums in TypeScript group values together so we don’t have to write them separately or 
 manage them as different variables. )
 
-💡Always use enums** when you need to represent fixed categories (like roles or statuses), and you want 
+Always use enums** when you need to represent fixed categories (like roles or statuses), and you want 
 to avoid confusion between numbers or strings. This makes your code cleaner and helps reduce errors. 
 
-🤚🤚 **Important Note:** In enums, we use `=` to assign values, unlike in objects where we use `:`.
+🤚Important Note:In enums, we use `=` to assign values, unlike in objects where we use `:`.
 
 😏 This is not an object, my child!** This is an enum. In objects, we use `:`, but in enums, we use `=` 
-for assigning the value. 🔥💪.
-
+for assigning the value.
 
 enum Status {
   Success = 1,
@@ -74,7 +70,7 @@ console.log(currentStatus); // Output: 1
 
 /*
 
-> 1. Any
+1. Any
 The `any` type means that a variable can hold **any type of value**—numbers, strings, objects, anything.
 It bypasses TypeScript’s type-checking, which is useful when you don't know the variable’s type in advance.
 
@@ -92,8 +88,7 @@ temporarily.
 
 -------------------------------------------
 
-
-> 2. Unknown
+2. Unknown
 
 `unknown` is a safer version of `any`. You can assign any type to it, but before you use it, you need to 
 **check the type**. It forces you to be careful.
@@ -114,7 +109,7 @@ if (typeof b === "string") {
 
 ------------------------------------------
 
-> 3.Void
+3.Void
 
 `void` is used for **functions** that **don't return anything**. If a function is only supposed to 
 perform an action and not return a value, you use `void`.
@@ -133,7 +128,7 @@ let abcTwo = (): string => {
 
 -----------------------------------
 
-> 4. Null and Undefined
+4. Null and Undefined
 
 `null` and `undefined` are their own types in TypeScript. They represent **no value** or **an uninitialized 
 variable.
@@ -147,16 +142,16 @@ let d: undefined = undefined; // This variable is declared but not initialized
 
 ---------------------
 
-> 5. Never
+5. Never
 
 `never` represents **a type that never happens. It’s used for functions that throw errors or
  never finish (like infinite loops). It tells TypeScript that a function never returns a value at all.
 
->So, to clarify:
+So, to clarify:
 never means the function won't return a value (either because it runs forever or crashes).
 It doesn't stop the function itself from running or printing logs within it.
 
->In short:
+In short:
 Without never: Code runs as normal with an infinite loop, but TypeScript thinks it might return something.
 With never: TypeScript understands the function never returns, but the behavior (infinite loop) remains the same.
 
@@ -179,9 +174,41 @@ let errorFunction = (): never => {
 //- Use Case**: When a function throws an error or has an infinite loop, so it never successfully returns a value.
 
 /*
+
+### Void vs Never in TypeScript
+
+1. `void`:
+- Use: For functions that complete normally but do not return a value**.
+  
+- Purpose: Function runs and finishes without returning anything.
+
+2.`never`:
+- Use: For functions that **never finish** or **terminate unexpectedly**.
+
+-Purpose: Used for functions that throw errors or run infinitely.
+
+Key Difference:
+
+- `void`: Function completes but **returns nothing**.
+- `never`: Function **never completes** normally (throws an error or loops forever).
+
+*/
+
+//>Example :
+
+function greet(): void {
+  console.log("Hello, Yashu!"); //example of void
+}
+
+function throwError(message: string): never {
+  throw new Error(message); //example of never
+}
+
+/*
+
 ----------------------
 
->>> Summary of Usage:
+Summary of Usage:
 
 - **`any`**: Allows any type (use sparingly).
 - **`unknown`**: Safer than `any`, requires type-checking before use.
@@ -196,7 +223,7 @@ let errorFunction = (): never => {
 //#What is type Inference in TypeScript ?
 
 /*
->Automatic identify kr naaa
+Automatic identify kr naaa
 
 Type inference in TypeScript is the ability of the compiler to automatically determine the type of a 
 variable or expression based on its value or context, without needing explicit type annotations. 
@@ -210,7 +237,7 @@ Example : let num = 5; // TypeScript infers that 'num' is of type 'number'
 
 */
 
-//#What is a union in?
+//#What is a Union ?
 
 /*
 A union in TypeScript allows you to define a variable that can hold multiple types of values. 
@@ -228,36 +255,6 @@ value = 42; // valid
 Using union types helps create more dynamic and flexible code while still benefiting 
 from TypeScript’s type-checking features
 */
-
-/*
-### void vs never in TypeScript
-
->> 1. `void`:
-- Use: For functions that complete normally but do not return a value**.
-  
-- Purpose: Function runs and finishes without returning anything.
-
->> 2.`never`:
-- Use: For functions that **never finish** or **terminate unexpectedly**.
-
--Purpose: Used for functions that throw errors or run infinitely.
-
->>Key Difference:
-
-- `void`: Function completes but **returns nothing**.
-- `never`: Function **never completes** normally (throws an error or loops forever).
-
-*/
-
-//>Example :
-
-function greet(): void {
-  console.log("Hello, Yashu!"); //example of void
-}
-
-function throwError(message: string): never {
-  throw new Error(message); //example of never
-}
 
 /*
 
@@ -292,12 +289,13 @@ let combine: userInfo = {
 console.log(combine)
 */
 
-
 /*
 #Type alias
 
-A **type alias** allows you to define a common type once and reuse it in different places, instead of 
+A Type alias allows you to define a common type once and reuse it in different places, instead of 
 rewriting the same type multiple times. It makes your code cleaner and easier to manage.
+A type alias in TypeScript is a way to create a new name for an existing type, enhancing code 
+readability and maintainability. It can represent primitive types, union types, or complex object types.
 
 //-- Example 1
 
@@ -326,6 +324,3 @@ let user: Person = {
 console.log(user);
 
 */
-
-
-
