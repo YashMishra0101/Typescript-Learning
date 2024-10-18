@@ -76,6 +76,7 @@ tup = ["one", 1, true];
 //#Type Alias
 /*A Type alias allows you to define a common type once and reuse it in different places, instead of
 rewriting the same type multiple times. It makes your code cleaner and easier to manage.
+
 A type alias in TypeScript is a way to create a new name for an existing type, enhancing code
 readability and maintainability. It can represent primitive types, union types, or complex object types.*/
 //-- Exmaple 1
@@ -101,6 +102,15 @@ let aman: main = {
 console.log(aman.umar);
 
 //#Interfaces
+
+/*
+Interfaces in TypeScript define the structure of an object by specifying its properties and types. 
+In React, they are used to define prop types for components, ensuring correct data is passed and 
+helping to catch errors during development.
+
+Interfaces bascially define the object and its property with the help of that we can structure the objects 
+and its property acc to our need , we generally used interfaces in react for defining the props.
+*/
 
 //--We can create two same name of interfaces and eventually they combine each other;
 
@@ -286,14 +296,13 @@ class SubClass extends UserData {
 let data = new SubClass("Test", 22);
 data.NewUserInfo();
 
-
 //# Getter and Setter
 
 // class Demo{
 //   naam:string;
 
 //   constructor(naam:string){
-//     this.naam=naam;  
+//     this.naam=naam;
 //   }
 
 //   get userNaam(){  // they are not a function  they are object ,they don't need parentheses when called
@@ -310,41 +319,42 @@ data.NewUserInfo();
 // see.NewUserNaam="Rahul ji";
 // console.log(see.userNaam);
 
-
 //#Function
 
 //-- How To Define the types in function
 
-function normalFun():void{
+function normalFun(): void {
   console.log("ky bol ti public");
 }
 
-let arrowFun=():string=>{
+let arrowFun = (): string => {
   return "Haaji kya Haal Chaal";
-}
+};
 
 //--Optional Paramater " ? "
 
-let userData=(name:string,age:number,location?:string):void=>{ // if we dont' put ? so it is necessary to give the value of location
-    console.log(name,age,location);
-}
+let userData = (name: string, age: number, location?: string): void => {
+  // if we dont' put ? so it is necessary to give the value of location
+  console.log(name, age, location);
+};
 
-userData("Yash",22)
+userData("Yash", 22);
 
 //--Default Paramater
 
-let naamBata=(name:string="Yashu"):void=>{ // if you not passed any name so it send default name 
+let naamBata = (name: string = "Yashu"): void => {
+  // if you not passed any name so it send default name
   console.log(name);
-}
+};
 
-naamBata("Rahul")
+naamBata("Rahul");
 
 //--Rest Operator  in Ts
-function sum(...bhejo:number[]) {
+function sum(...bhejo: number[]) {
   return bhejo.reduce((total, num) => total + num, 0);
 }
 
-console.log(sum(1, 2, 3, 4));  // Output: 10
+console.log(sum(1, 2, 3, 4)); // Output: 10
 
 /*
 ##Type assertions :
@@ -373,9 +383,8 @@ compiler does. In such cases, you can use type assertions to inform TypeScript a
 
 */
 
-
 //#Literal Types. ( syntax " :  " bs type ke place per value add kr do as you want)
-// Literal types allow you to specify exact values that a variable or parameter can hold, instead of just general types like 
+// Literal types allow you to specify exact values that a variable or parameter can hold, instead of just general types like
 // string, number, or boolean.
 
 // String Literal Types
@@ -388,7 +397,7 @@ stringornum = "harsh";
 // stringornum = "harish"; // Not Possible
 
 let isComplete: true;
-isComplete = true;  // Valid
+isComplete = true; // Valid
 // isComplete = false; // Error
 
 let num: 3;
